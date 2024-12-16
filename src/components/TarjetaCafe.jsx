@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import "./../style/TarjetaCafe.css";
 
-import Nota from "./nota";
+import Nota from "./Nota";
 
 function TarjetaCafe({cafe}) {
     const [nota, setNota] = useState(0);

@@ -1,19 +1,17 @@
-
 import ImageUploading from "react-images-uploading";
 
 import "./../style/inputImagen.css";
 
 function InputImagen({images, setImages}) {
 
-
-    const maxNumber = 69;
+    const maxNumber = 1;
     const onChange = (imageList, addUpdateIndex) => {
       console.log(imageList, addUpdateIndex);
       setImages(imageList);
     };
 
     return (
-        <ImageUploading value={images} onChange={onChange} maxNumber={maxNumber} dataURLKey="data_url" acceptType={["jpg"]} >
+        <ImageUploading value={images} onChange={onChange} maxNumber={maxNumber} dataURLKey="data_url" acceptType={["jpg", "jpeg", "png"]}>
         {({ imageList, onImageUpload, onImageUpdate, onImageRemove, isDragging, dragProps }) => (
           <div className="upload__image-wrapper">
             {imageList.length === 0 && (
