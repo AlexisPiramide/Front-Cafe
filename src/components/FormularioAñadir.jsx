@@ -1,11 +1,11 @@
-import InputImagen from './inputImagen';
+import Dropzone from './dropzone';
+
 import { useState } from "react";
+import "./../style/dropzone.css";
 import "./../style/upload.css";
 
-//La pagina a veces se renceriza cuando se carga una imagen en inputImagen
-
 function FormularioAñadir() {
-    const [images, setImages] = useState();
+    const [imagen, setImagen] = useState();
     const [nombre, setNombre] = useState("");
     const [tipo, setTipo] = useState("");
     const [enlace, setEnlace] = useState("");
@@ -22,6 +22,7 @@ function FormularioAñadir() {
             console.log("No añadido");
         }
     };
+
 
     const handleValue = (valor, option) => {
         switch (option) {
@@ -66,8 +67,9 @@ function FormularioAñadir() {
                 required
             />
             <label>Imagen:</label>
-            <InputImagen images={images} setImages={setImages} />
 
+            <Dropzone imagen={imagen} setImagen={setImagen} />
+            
             <label>Enlace:</label>
             <input
                 type="text"
