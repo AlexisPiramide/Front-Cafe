@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import Votaciones from './components/votaciones';
 import TarjetaCafe from './components/TarjetaCafe'
 import FormularioAñadir from './components/FormularioAñadir'
 
@@ -44,8 +45,14 @@ function App() {
     </>
   )
     */
+   /*
    return (
     <FormularioAñadir/>
+   )
+   */
+
+   return (
+      <Votaciones/>
    )
 }
 
