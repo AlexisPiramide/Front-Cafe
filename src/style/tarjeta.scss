@@ -1,0 +1,50 @@
+.lista-cafes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5em;
+}
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 100px;
+    padding: 1em 2em;
+    margin-top: 1em;
+
+    & #nombre-cafe {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    & #tipo-cafe {
+        font-size: 1.2em;
+    }
+
+    & #imagen-cafe {
+        width: 350px;
+    }
+
+    & .nota{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-size: 2em;
+        color: yellow;
+    }
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    padding: 0.5em 1em;
+    margin-top: 2em;
+    border-radius: 5px;
+    &:hover {
+        
+    }
+}

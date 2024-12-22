@@ -1,4 +1,3 @@
-import "./../style/Nota.css";
 
 function Nota({nota}) {
 

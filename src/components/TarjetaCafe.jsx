@@ -1,12 +1,11 @@
 import { useState } from 'react'
 
-import "./../style/TarjetaCafe.css";
+import "./../style/tarjeta.scss";
 
 import Nota from "./Nota";
 
 function TarjetaCafe({cafe}) {
-    const [nota, setNota] = useState(0);
-
+ 
     return (
         <div className="tarjeta">
             <h2 id="nombre-cafe">{cafe.nombre}</h2>
