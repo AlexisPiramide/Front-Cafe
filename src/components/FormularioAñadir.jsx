@@ -1,8 +1,8 @@
-import Dropzone from './dropzone';
+import Dropzone from './Drop-Zone';
 
 import { useState } from "react";
-import "./../style/dropzone.css";
-import "./../style/upload.css";
+
+import "./../style/form.scss";
 
 function FormularioAñadir() {
     const [imagen, setImagen] = useState();

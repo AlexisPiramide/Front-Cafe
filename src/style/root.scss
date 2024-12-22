@@ -1,0 +1,27 @@
+:root {
+    --primary: white;
+    --secondary: lightgray;
+    --tertiary: lightblue;
+    --font-size-base: 16px;
+    --spacing: 8px;
+  }
+
+
+body {
+    height: 100vh;
+    width: 100vw;
+
+    margin: 0;
+    padding: 0;
+    & #root {
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        background-color: var(--primary);
+    }
+}
+

@@ -1,4 +1,3 @@
-import "./../style/inputImagen.css";
 
 function InputImagen({ imagen, setImagen }) {
   const añadirDesdeCarpeta = (e) => {
