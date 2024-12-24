@@ -1,14 +1,27 @@
+import {useEffect, useState } from "react";
+
 import Dropzone from './Drop-Zone';
-
-import { useState } from "react";
-
 import "./../style/form.scss";
+
 
 function FormularioAñadir() {
     const [imagen, setImagen] = useState();
     const [nombre, setNombre] = useState("");
     const [tipo, setTipo] = useState("");
     const [enlace, setEnlace] = useState("");
+    
+    const [tipos, setTipos] = useState([]);
+
+    useEffect(() => {
+        getTipos();
+    }, []);
+
+    const getTipos = async () => {
+        const response = await fetch("http://localhost:3001/tipos");
+        const data = await response.json();
+        setTipos(data);
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,26 +30,28 @@ function FormularioAñadir() {
         const validacionEnlace = validation(enlace, /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi, "El enlace debe ser una URL válida");
 
         if (validacionNombre && validacionTipo && validacionEnlace) {
+
+            const json = {
+                "nombre": nombre,
+                "tipo": tipo,
+                "imagen": imagen[0],
+                "enlace": enlace,
+            }
+            
             console.log("Añadido");
         } else {
             console.log("No añadido");
         }
     };
 
-
     const handleValue = (valor, option) => {
-        switch (option) {
-            case "nombre":
-                setNombre(valor);
-                break;
-            case "tipo":
-                setTipo(valor);
-                break;
-            case "enlace":
-                setEnlace(valor);
-                break;
-            default:
-                break;
+        const setters = {
+            nombre: setNombre,
+            tipo: setTipo,
+            enlace: setEnlace,
+        };
+        if (setters[option]) {
+            setters[option](valor);
         }
     };
 
@@ -59,17 +74,21 @@ function FormularioAñadir() {
                 required
             />
             <label>Tipo:</label>
-            <input
-                type="text"
+            <select
                 id="tipo"
                 name="tipo"
                 onChange={(e) => handleValue(e.target.value, e.target.name)}
                 required
-            />
+            >
+                <option value="">Seleccione un tipo</option>
+                {tipos.map((tipo) => (
+                    <option key={tipo} value={tipo}>
+                        {tipo}
+                    </option>
+                ))}
+            </select>
             <label>Imagen:</label>
-
             <Dropzone imagen={imagen} setImagen={setImagen} />
-            
             <label>Enlace:</label>
             <input
                 type="text"

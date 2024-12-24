@@ -8,8 +8,6 @@ export default function Nav() {
     return ( 
         <nav>
             <button onClick={() => navigate("/FormularioAñadir")}>Añadir café</button>
-            <button onClick={() => navigate("/ListaCafes")}>Lista de cafés</button>
-            <button onClick={() => navigate("/Votaciones")}>Votaciones</button>
         </nav>
     );
 }
