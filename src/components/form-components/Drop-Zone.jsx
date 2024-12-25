@@ -40,7 +40,7 @@ function InputImagen({ imagen, setImagen }) {
 		>
 			{imagen ? (<img src={URL.createObjectURL(imagen[0])} alt="imagen" /> ) : ( <p>Arrastra la imagen aquí o pulsa aqui</p> )}
 		</div>
-		{imagen ? (<button className="btn-eliminar-imagen" onClick={() => setImagen()}> Eliminar </button>) : null}
+		{imagen ? (<button className="btn-eliminar-imagen" onClick={() => setImagen()}> Eliminar </button>) : <button className="btn-eliminar-imagen" style={{ visibility: "hidden" }} onClick={() => setImagen()}> Eliminar </button>}
 		</>
 	);
 }

@@ -7,7 +7,11 @@ export default function Nav() {
 
     return ( 
         <nav>
-            <button onClick={() => navigate("/FormularioAñadir")}>Añadir café</button>
+            <button onClick={() => navigate("/añadir")}>Añadir café</button>
+            <button onClick={() => navigate("/registro")}>Registrarse</button>
+            <button onClick={() => navigate("/login")}>Iniciar sesión</button>
+            <button onClick={() => navigate("/cafes")}>Lista de cafés</button>
         </nav>
     );
 }
+

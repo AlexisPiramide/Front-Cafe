@@ -5,6 +5,9 @@ import App from "./components/App";
 import "./style/root.scss"
 
 import FormularioAñadir from "./components/FormularioAñadir";
+import Registro from "./components/Registro";
+import Login from "./components/Login";
+import Listas from "./components/Listas";
 
 const MainContext = createContext();
 
@@ -13,7 +16,10 @@ const MainContext = createContext();
         path: "/",
         element: <App />,
         children: [
-        { path: "FormularioAñadir", element: <FormularioAñadir /> }
+        { path: "añadir", element: <FormularioAñadir />},
+        { path: "registro", element: <Registro />},
+        { path: "login", element: <Login />},
+        { path: "cafes", element: <Listas />}
         ]
     }
 ]);

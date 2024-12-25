@@ -1,104 +1,87 @@
-import {useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
-import Dropzone from './Drop-Zone';
+import Dropzone from './form-components/Drop-Zone';
+import FormField from './form-components/FormField';
+import SelectField from './form-components/SelectField';
+
 import "./../style/form.scss";
 
-
 function FormularioAñadir() {
-    const [imagen, setImagen] = useState();
     const [nombre, setNombre] = useState("");
     const [tipo, setTipo] = useState("");
     const [enlace, setEnlace] = useState("");
-    
+    const [imagen, setImagen] = useState();
     const [tipos, setTipos] = useState([]);
 
     useEffect(() => {
-        getTipos();
+        /*
+        const fetchTipos = async () => {
+            
+            const response = await fetch("http://localhost:3001/tipos");
+            const data = await response.json();
+            if((data)!=null){
+                
+            }
+            setTipos(data);
+       
+        };
+        fetchTipos();
+        */
+        setTipos( [{"nombre": "Arabico"}, {"nombre": "Robusta"}, {"nombre": "Liberica"}])
     }, []);
 
-    const getTipos = async () => {
-        const response = await fetch("http://localhost:3001/tipos");
-        const data = await response.json();
-        setTipos(data);
-    }
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const validacionNombre = validation(nombre, /[a-zA-Z]{3,}/, "El nombre debe tener al menos 3 letras");
-        const validacionTipo = validation(tipo, /[a-zA-Z]{3,}/, "El tipo debe tener al menos 3 letras");
-        const validacionEnlace = validation(enlace, /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi, "El enlace debe ser una URL válida");
-
-        if (validacionNombre && validacionTipo && validacionEnlace) {
-
-            const json = {
-                "nombre": nombre,
-                "tipo": tipo,
-                "imagen": imagen[0],
-                "enlace": enlace,
-            }
-            
-            console.log("Añadido");
-        } else {
-            console.log("No añadido");
-        }
-    };
-
-    const handleValue = (valor, option) => {
-        const setters = {
-            nombre: setNombre,
-            tipo: setTipo,
-            enlace: setEnlace,
-        };
-        if (setters[option]) {
-            setters[option](valor);
-        }
-    };
-
-    const validation = (value, RegEX, error) => {
-        if (!RegEX.test(value)) {
+    const validateField = (value, regex, error) => {
+        if (!regex.test(value)) {
             console.error(error);
             return false;
         }
         return true;
     };
 
+    const validateForm = () => {
+        return (
+            validateField(nombre, /[a-zA-Z]{3,}/, "El nombre debe tener al menos 3 letras") &&
+            validateField(tipo, /[a-zA-Z]{3,}/, "El tipo debe tener al menos 3 letras") &&
+            validateField(enlace, /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi, "El enlace debe ser una URL válida")
+        );
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (validateForm()) {
+            const payload = { nombre, tipo, imagen: imagen?.[0], enlace };
+            console.log("Payload to submit:", payload);
+        } else {
+            console.error("Validation failed.");
+        }
+    };
+
     return (
-        <form>
-            <label>Nombre:</label>
-            <input
+        <form onSubmit={handleSubmit}>
+            <FormField
+                label="Nombre"
                 type="text"
                 id="nombre"
                 name="nombre"
-                onChange={(e) => handleValue(e.target.value, e.target.name)}
-                required
+                onChange={(e) => setNombre(e.target.value)}
             />
-            <label>Tipo:</label>
-            <select
+            <SelectField
+                label="Tipo"
                 id="tipo"
                 name="tipo"
-                onChange={(e) => handleValue(e.target.value, e.target.name)}
-                required
-            >
-                <option value="">Seleccione un tipo</option>
-                {tipos.map((tipo) => (
-                    <option key={tipo} value={tipo}>
-                        {tipo}
-                    </option>
-                ))}
-            </select>
+                options={tipos}
+                onChange={(e) => setTipo(e.target.value)}
+            />
             <label>Imagen:</label>
             <Dropzone imagen={imagen} setImagen={setImagen} />
-            <label>Enlace:</label>
-            <input
+            <FormField
+                label="Enlace"
                 type="text"
                 id="enlace"
                 name="enlace"
-                onChange={(e) => handleValue(e.target.value, e.target.name)}
+                onChange={(e) => setEnlace(e.target.value)}
             />
-            <button type="submit" onClick={(e) => handleSubmit(e)}>
-                Añadir
-            </button>
+            <button type="submit">Añadir</button>
         </form>
     );
 }
