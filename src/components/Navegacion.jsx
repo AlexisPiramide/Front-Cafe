@@ -11,6 +11,7 @@ export default function Nav() {
             <button onClick={() => navigate("/registro")}>Registrarse</button>
             <button onClick={() => navigate("/login")}>Iniciar sesión</button>
             <button onClick={() => navigate("/cafes")}>Lista de cafés</button>
+            <button onClick={() => navigate("/votaciones")}>Votaciones</button>
         </nav>
     );
 }

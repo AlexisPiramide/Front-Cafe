@@ -8,6 +8,7 @@ import FormularioAñadir from "./components/FormularioAñadir";
 import Registro from "./components/Registro";
 import Login from "./components/Login";
 import Listas from "./components/Listas";
+import Votaciones from "./components/Votaciones";
 
 const MainContext = createContext();
 
@@ -19,7 +20,8 @@ const MainContext = createContext();
         { path: "añadir", element: <FormularioAñadir />},
         { path: "registro", element: <Registro />},
         { path: "login", element: <Login />},
-        { path: "cafes", element: <Listas />}
+        { path: "cafes", element: <Listas />},
+        { path: "votaciones", element: <Votaciones />}
         ]
     }
 ]);
