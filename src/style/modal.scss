@@ -1,15 +1,12 @@
-/* Modal overlay background */
 .ReactModal__Overlay {
-    background-color: rgba(0, 0, 0, 0.5); /* Transparent black */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    overflow: visible;
-  }
+  background-color: rgba(0, 0, 0, 0.5); // Transparent black
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: visible;
   
-  /* Modal content */
-  .ReactModal__Content {
+	.ReactModal__Content {
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -21,45 +18,41 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    h2 {
+      margin: 0 0 20px;
+      font-size: 1.5rem;
+      color: #333;
+    }
+    
+    div {
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    span {
+      font-size: 2rem;
+      margin: 0 5px;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+    
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007BFF;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
   }
-  
-  /* Title */
-  .ReactModal__Content h2 {
-    margin: 0 0 20px;
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  /* Star container */
-  .ReactModal__Content div {
-    margin: 10px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Stars */
-  .ReactModal__Content span {
-    font-size: 2rem;
-    margin: 0 5px;
-    transition: color 0.3s ease;
-    cursor: pointer;
-  }
-  
-  /* Close button */
-  .ReactModal__Content button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .ReactModal__Content button:hover {
-    background-color: #0056b3;
-  }
-  
+}
