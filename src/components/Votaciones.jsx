@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import "./../style/tarjeta.scss";
 import Nota from './cafes-components/Nota';
-
+import Votos from './votaciones/Votos'
 export default function Votaciones(/**{usuario}**/) {
     // VV Visivilidad Valorados / VNV Visivilidad No Valorados
     const [VV, setVV] = useState(true);
@@ -28,6 +28,7 @@ export default function Votaciones(/**{usuario}**/) {
                             <img id="imagen-cafe" src={valoracion.imagen} alt={valoracion.nombre} />
                             <Nota nota={valoracion.nota} />
                             <a href={valoracion.link}>Comprar</a>
+                            <Votos votoAntiguo={valoracion.nota}/>
                         </div>
                     );
                 })}
@@ -46,6 +47,7 @@ export default function Votaciones(/**{usuario}**/) {
                                     <img id="imagen-cafe" src={valoracion.imagen} alt={valoracion.nombre} />
                                     
                                     <a href={valoracion.link}>Comprar</a>
+                                    <Votos votoAntiguo={0}/>
                                 </div>
                             );
                         }
