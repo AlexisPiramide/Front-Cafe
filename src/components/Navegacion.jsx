@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import "./../style/nav.scss"
-export default function Nav() {
+
+
+export default function Nav({usuario}) {
     const navigate = useNavigate();
 
-    
 
     return ( 
         <nav>
@@ -13,11 +14,11 @@ export default function Nav() {
                     <h1>Cafes Piramide</h1>
                 </div>
                 <div className="botones">
-                    <button onClick={() => navigate("/añadir")}>Añadir café</button>
-                    <button onClick={() => navigate("/registro")}>Registrarse</button>
-                    <button onClick={() => navigate("/login")}>Iniciar sesión</button>
+                    {usuario.tienda?<button onClick={() => navigate("/añadir")}>Añadir café</button>:''}
+                    {usuario?'':<button onClick={() => navigate("/registro")}>Registrarse</button>}
+                    {usuario?'':<button onClick={() => navigate("/login")}>Iniciar sesión</button>}
                     <button onClick={() => navigate("/cafes")}>Lista de cafés</button>
-                    <button onClick={() => navigate("/votaciones")}>Votaciones</button>
+                    {usuario?'':<button onClick={() => navigate("/votaciones")}>Votaciones</button>}
                 </div>
             </div>
             <div className="embellezedor"></div>
