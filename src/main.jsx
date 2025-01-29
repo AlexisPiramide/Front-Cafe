@@ -9,6 +9,7 @@ import Registro from "./components/Registro";
 import Login from "./components/Login";
 import Listas from "./components/Listas";
 import Votaciones from "./components/Votaciones";
+import ZonaUsuario from "./components/ZonaUsuario";
 
 const MainContext = createContext();
 
@@ -21,7 +22,8 @@ const MainContext = createContext();
         { path: "registro", element: <Registro />},
         { path: "login", element: <Login />},
         { path: "cafes", element: <Listas />},
-        { path: "votaciones", element: <Votaciones />}
+        { path: "votaciones", element: <Votaciones />},
+        { path: "usuario", element: <ZonaUsuario />}
         ]
     }
 ]);

@@ -25,7 +25,9 @@ export default function Nav({usuario,setUsuario}) {
                     {usuario?'':<button onClick={() => navigate("/login")}>Iniciar sesión</button>}
                     <button onClick={() => navigate("/cafes")}>Lista de cafés</button>
                     {usuario?'':<button onClick={() => navigate("/votaciones")}>Votaciones</button>}
+                    {usuario?<button onClick={() => navigate("/usuario")}>Perfil de usuario</button>:''}
                     {usuario?<button onClick={cerrarSesion}>Cerrar Sesion</button>:''}
+
                 </div>
             </div>
             <div className="embellezedor"></div>

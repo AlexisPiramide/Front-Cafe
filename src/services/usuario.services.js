@@ -36,4 +36,23 @@ const registro = async (alias,correo, password) => {
     }
 }
 
-export {login,registro};
+const actualizar = async (alias,foto, password) => {
+    const headers = {
+        'Content-Type': 'application/json'
+    };
+    const token = localStorage.getItem('token');
+    headers['Authorization'] = 'Bearer ' + token.stringify();
+    const data = await fetch(URL+"/api/usuarios/actualizar",{
+        method: 'PUT',
+        headers: headers,
+        body: JSON.stringify({alias: alias,password:password,foto:foto})
+    })
+    if(data.ok){
+        const json = await data.json();
+        return json;
+    }else{
+        throw new Error('Error al actualizar usuario');
+    }
+}
+
+export {login,registro,actualizar};
