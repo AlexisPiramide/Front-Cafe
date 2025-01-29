@@ -40,13 +40,15 @@ const actualizar = async (alias,foto, password) => {
     const headers = {
         'Content-Type': 'application/json'
     };
-    const token = localStorage.getItem('token');
-    headers['Authorization'] = 'Bearer ' + token.stringify();
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+    headers['Authorization'] = 'Bearer ' + usuario.token;
     const data = await fetch(URL+"/api/usuarios/actualizar",{
         method: 'PUT',
         headers: headers,
         body: JSON.stringify({alias: alias,password:password,foto:foto})
     })
+    console.log(data);
     if(data.ok){
         const json = await data.json();
         return json;

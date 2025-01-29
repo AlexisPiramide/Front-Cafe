@@ -4,6 +4,7 @@ import { useState } from "react";
 import Dropzone from "./form-components/Drop-Zone";
 import FormField from "./form-components/FormField";
 import {actualizar} from "./../services/usuario.services";
+import {validacionAlias, validacionContraseña, validacionConfirmarContraseña} from "./../services/validaciones.services";
 
 export default function ZonaUsuario() {
     const [alias, setAlias] = useState(""); const [errorAlias, setErrorAlias] = useState("");
