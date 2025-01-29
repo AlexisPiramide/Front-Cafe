@@ -8,11 +8,11 @@ const Tarjeta = ({ imagen, nombre, tienda, tueste, precio, nota }) => {
 
     return (
         <div className="tarjeta">
-            <div id="nombre-cafe">{nombre}</div>
-            <div id="tienda-cafe">Tienda: {tienda}</div>
-            <div id="tipo-cafe">Tueste: {tueste}</div>
-            <div id="precio-cafe">Precio: ${precio}</div>
-            <img id="imagen-cafe" src={enlaceimagen} alt={nombre} onError={(e) => e.target.src = "/fallo.jpg"}/>
+            <div className="nombre-cafe">{nombre}</div>
+            <div className="tienda-cafe" id={tienda.tienda_id}>Tienda: {tienda.tienda_alias}</div>
+            <div className="tipo-cafe">Tueste: {tueste}</div>
+            <div className="precio-cafe">Precio: ${precio}</div>
+            <img className="imagen-cafe" src={enlaceimagen} alt={nombre} onError={(e) => e.target.src = "/fallo.jpg"}/>
             <Nota nota={nota} />
         </div>
     );
