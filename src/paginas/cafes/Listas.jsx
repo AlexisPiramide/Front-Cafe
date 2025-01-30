@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Tarjeta from "./cafes-components/Tarjeta";
-import { getCafes } from "../services/cafes.services";
-import "../style/cafes.scss"
+import Tarjeta from "../../components/cafes-components/Tarjeta";
+import { getCafes } from "../../services/cafes.services";
+import "../../style/cafes.scss"
 export default function Listas() {
     const [cafes, setCafes] = useState([]);
 

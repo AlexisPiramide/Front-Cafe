@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { login } from "../services/usuario.services";
-import FormField from "./form-components/FormField";
-import { validacionCorreo, validacionContraseña } from "./../services/validaciones.services";
-import "./../style/form.scss";
+import { login } from "../../services/usuario.services";
+import FormField from "../../components/form-components/FormField";
+import { validacionCorreo, validacionContraseña } from "../../services/validaciones.services";
+import "./../../style/form.scss";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 function Login() {

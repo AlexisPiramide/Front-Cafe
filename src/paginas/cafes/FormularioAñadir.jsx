@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-import Dropzone from './form-components/Drop-Zone';
-import FormField from './form-components/FormField';
-import SelectField from './form-components/SelectField';
+import Dropzone from '../../components/form-components/Drop-Zone';
+import FormField from '../../components/form-components/FormField';
+import SelectField from '../../components/form-components/SelectField';
 
-import "./../style/form.scss";
+import "./../../style/form.scss";
 
 function FormularioAñadir() {
     const [nombre, setNombre] = useState("");
