@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./../style/nav.scss"
+import Votaciones from "./Votaciones";
 
 
 export default function Nav({usuario,setUsuario}) {
@@ -24,7 +25,7 @@ export default function Nav({usuario,setUsuario}) {
                     {usuario?'':<button onClick={() => navigate("/registro")}>Registrarse</button>}
                     {usuario?'':<button onClick={() => navigate("/login")}>Iniciar sesión</button>}
                     <button onClick={() => navigate("/cafes")}>Lista de cafés</button>
-                    {usuario?'':<button onClick={() => navigate("/votaciones")}>Votaciones</button>}
+                    {usuario?<button onClick={() => navigate("/votar")}>Votar</button>:''}
                     {usuario?<button onClick={() => navigate("/usuario")}>Perfil de usuario</button>:''}
                     {usuario?<button onClick={cerrarSesion}>Cerrar Sesion</button>:''}
 

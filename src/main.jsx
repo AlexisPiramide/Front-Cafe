@@ -22,7 +22,7 @@ const MainContext = createContext();
         { path: "registro", element: <Registro />},
         { path: "login", element: <Login />},
         { path: "cafes", element: <Listas />},
-        { path: "votaciones", element: <Votaciones />},
+        { path: "votar", element: <Votaciones />},
         { path: "usuario", element: <ZonaUsuario />}
         ]
     },{

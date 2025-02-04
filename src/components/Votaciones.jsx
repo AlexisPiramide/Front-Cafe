@@ -1,17 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import "./../style/tarjeta.scss";
 import Nota from './cafes-components/Nota';
-import Votos from './votaciones/Votos'
-export default function Votaciones(/**{usuario}**/) {
-    // VV Visivilidad Valorados / VNV Visivilidad No Valorados
+import Votos from './votaciones/Votos';
+
+import {recogerValoraciones} from './../services/votaciones.services';
+export default function Votaciones({usuario}) {
+
     const [VV, setVV] = useState(true);
     const [VNV, setVNV] = useState(true);
+    const [valoradas,setValoradas] = useState(null);
 
-    const usuario = {
-            nombre : "Pepe",
-            valoraciones : [
-                {"nombre": "Café de Colombia", "tipo": "Arabica", "imagen": "https://i.blogs.es/139e0f/cafe-americano2/1366_2000.jpeg", "link": "https://www.cafedecolombia.com/"}, {"nombre": "Café de Etiopía", "tipo": "Arabica", "imagen": "https://i.blogs.es/139e0f/cafe-americano2/1366_2000.jpeg", "nota": 2, "link": "https://www.cafedecolombia.com/"}, {"nombre": "Café de Brasil", "tipo": "Arabica", "imagen": "https://i.blogs.es/139e0f/cafe-americano2/1366_2000.jpeg", "nota": 3.5, "link": "https://www.cafedecolombia.com/"}
-            ]
+    const recogerValoraciones = async () => {
+        const result = await recogerValoraciones();
+        setValoradas(result);
+    }
+    
+    useEffect(() => {
+        recogerValoraciones
+    }, []);
+
+    
+
+    if (!valoradas || valoradas.length === 0) {
+        return null;
     }
 
     return (
@@ -19,7 +30,8 @@ export default function Votaciones(/**{usuario}**/) {
              <h1>Cafes ya Valorados</h1>
             <button onClick={() => setVV(!VV)}> {VV ? 'Ocultar' : 'Mostrar'} </button>
             <ul className="lista-valorados" style={{ display: VV ? '' : 'none' }}>
-                {usuario.valoraciones.map((valoracion, index) => {
+                
+                {valoradas.map((valoracion, index) => {
                     if (valoracion.nota !== undefined)
                     return (
                         <div className="tarjeta" key={index}>
