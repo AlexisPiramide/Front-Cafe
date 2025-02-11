@@ -19,8 +19,8 @@ const validacionCorreo = (correo, setError) => {
 };
 
 const validacionContraseña = (contraseña, setError) => {
-    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(contraseña)) {
-        setError("La contraseña debe tener al menos 6 caracteres, contener un número y una letra");
+    if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(contraseña)) {
+        setError("La contraseña debe tener al menos 6 caracteres, contener un número, una letra y un carácter especial");
         return false;
     } else {
         setError("");
