@@ -1,22 +1,48 @@
 import { useEffect, useState } from "react";
 import Tarjeta from "../../components/cafes-components/Tarjeta";
-import { getCafes } from "../../services/cafes.services";
+import { getCafes, getFiltrado } from "../../services/cafes.services";
 import "../../style/cafes.scss"
+import Paginas from "../../components/cafes-components/Paginas";
+import Filtros from "../../components/cafes-components/Filtros";
+
 export default function Listas() {
     const [cafes, setCafes] = useState([]);
-
-    const fetchData = async () => {
-        const cafesdb = await getCafes();
+    const [filtros, setFiltros] = useState({});
+    const [isFiltrado,setIsFiltrado] = useState(false);
+    const [pagina,setPagina] = useState(0);
+    
+    const fetchData = async (pagina) => {
+        const cafesdb = await getCafes(pagina);
         setCafes(cafesdb || []); 
     };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+    const fetchFiltrado = async (filtros,pagina) => {
+        const cafesdb = await getFiltrado(filtros,pagina);
+        console.log(cafesdb);
+        setCafes(cafesdb || []);
+    }
 
+    useEffect(() => {
+        console.log(pagina)
+        console.log(isFiltrado)
+        if(isFiltrado){
+            fetchFiltrado(filtros,pagina);
+        } else {
+            fetchData(pagina);
+        }
+    }, [pagina]);
+
+    useEffect(() => {
+        if(isFiltrado){
+            fetchFiltrado(filtros,0);
+        } else {
+            fetchData(0);
+        }
+    }, [filtros]);
+    
     return (
         <>
-            <h1>Lista de cafés</h1>
+            <Filtros setFiltros={setFiltros} setIsFiltrado={setIsFiltrado}/>
             <div className="cafes">
                 {cafes && cafes.length > 0 ? (
                     cafes.map((cafe, index) => (
@@ -26,6 +52,7 @@ export default function Listas() {
                     "Lo sentimos pero parece haber un problema con nuestro servidor"
                 )}
             </div>
+            <Paginas pagina={pagina} setPagina={setPagina} isFiltrado={isFiltrado} filtros={filtros}/>
         </>
     );
 }

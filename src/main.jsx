@@ -11,6 +11,7 @@ import Listas from "./paginas/cafes/Listas";
 import Votaciones from "./components/Votaciones";
 import ZonaUsuario from "./paginas/usuarios/ZonaUsuario";
 import Error from "./paginas/error/Error";
+import Cesta from "./paginas/usuarios/Cesta";
 const MainContext = createContext();
 
     const router = createBrowserRouter([
@@ -23,7 +24,8 @@ const MainContext = createContext();
         { path: "login", element: <Login />},
         { path: "cafes", element: <Listas />},
         { path: "votar", element: <Votaciones />},
-        { path: "usuario", element: <ZonaUsuario />}
+        { path: "usuario", element: <ZonaUsuario />},
+        {path: "cesta", element: <Cesta />}
         ]
     },{
         path: "*",

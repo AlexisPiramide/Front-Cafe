@@ -5,7 +5,6 @@ import Votaciones from "./Votaciones";
 
 export default function Nav({usuario,setUsuario}) {
     const navigate = useNavigate();
-
     const cerrarSesion = () => {
         localStorage.removeItem("usuario");
         setUsuario(null);
@@ -28,6 +27,7 @@ export default function Nav({usuario,setUsuario}) {
                     {usuario?<button onClick={() => navigate("/votar")}>Votar</button>:''}
                     {usuario?<button onClick={() => navigate("/usuario")}>Perfil de usuario</button>:''}
                     {usuario?<button onClick={cerrarSesion}>Cerrar Sesion</button>:''}
+                    {usuario?<button onClick={() => navigate("/cesta")}>Cesta</button>:''}
 
                 </div>
             </div>
