@@ -19,6 +19,7 @@ const MainContext = createContext();
         path: "/",
         element: <App />,
         children: [
+        { path: "", element: <Listas />},
         { path: "añadir", element: <FormularioAñadir />},
         { path: "registro", element: <Registro />},
         { path: "login", element: <Login />},

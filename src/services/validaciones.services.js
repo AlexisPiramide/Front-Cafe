@@ -9,7 +9,7 @@ const validacionAlias = (alias, setError) => {
 };
 
 const validacionCorreo = (correo, setError) => {
-    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correo)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
         setError("Formato Correo Valido [XXXXX]@[XXXXX].[XX]");
         return false;
     } else {

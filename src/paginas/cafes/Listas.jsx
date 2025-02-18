@@ -4,13 +4,18 @@ import { getCafes, getFiltrado } from "../../services/cafes.services";
 import "../../style/cafes.scss"
 import Paginas from "../../components/cafes-components/Paginas";
 import Filtros from "../../components/cafes-components/Filtros";
+import ModalConfirmacion from "../../components/ModalConfirmacion";
 
 export default function Listas() {
     const [cafes, setCafes] = useState([]);
     const [filtros, setFiltros] = useState({});
     const [isFiltrado,setIsFiltrado] = useState(false);
     const [pagina,setPagina] = useState(0);
-    
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openModal = () => setIsOpen(true);
+
     const fetchData = async (pagina) => {
         const cafesdb = await getCafes(pagina);
         setCafes(cafesdb || []); 
@@ -46,13 +51,14 @@ export default function Listas() {
             <div className="cafes">
                 {cafes && cafes.length > 0 ? (
                     cafes.map((cafe, index) => (
-                        <Tarjeta key={index} peso={cafe.peso} imagen={cafe.imagen} nombre={cafe.nombre} tienda={cafe.tienda} origen={cafe.origen} tueste={cafe.tueste} precio={cafe.precio} nota={cafe.nota}/>
+                        <Tarjeta key={index} peso={cafe.peso} imagen={cafe.imagen} nombre={cafe.nombre} tienda={cafe.tienda} origen={cafe.origen} tueste={cafe.tueste} precio={cafe.precio} nota={cafe.nota} openModal={openModal}/>
                     ))
                 ) :  (
                     "Lo sentimos pero parece haber un problema con nuestro servidor"
                 )}
             </div>
             <Paginas pagina={pagina} setPagina={setPagina} isFiltrado={isFiltrado} filtros={filtros}/>
+            <ModalConfirmacion isOpen={isOpen} setIsOpen={setIsOpen} mensaje={"Se ha llevado el cafe al carrito correctamente"} tipo={"cafe"} />
         </>
     );
 }

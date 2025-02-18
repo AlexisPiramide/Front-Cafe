@@ -27,15 +27,15 @@ export default function Paginas({pagina,setPagina,isFiltrado,filtros}) {
             getPaginasFiltro(filtros);
         }
 
-    }, [isFiltrado])
+    }, [isFiltrado,filtros]);
 
     return (
         <div className="paginas">
-            <button id="0" onClick={(e) => setPagina(e.target.id)}>0</button>
-            <button onClick={() => setPagina(prev => Math.max(0, prev - 1))}>-</button>
+            <button id="0" onClick={(e) => setPagina(e.target.id)} disabled={paginaFinal <= 0}>0</button>
+            <button onClick={() => setPagina(prev => Math.max(0, prev - 1))} disabled={paginaFinal <= 0}>-</button>
             <button disabled>Pagina Actual:{pagina}</button>
-            <button onClick={() => setPagina(prev => Math.min(paginaFinal, prev + 1))}>+</button>
-            <button id={paginaFinal} onClick={(e) => setPagina(e.target.id)}>{paginaFinal}</button>
+            <button onClick={() => setPagina(prev => Math.min(paginaFinal, prev + 1))} disabled={paginaFinal <= 0}>+</button>
+            <button id={paginaFinal} onClick={(e) => setPagina(e.target.id)} disabled={paginaFinal <= 0}>{paginaFinal <= 0 ? 0 : paginaFinal}</button>
         </div>
     )
 }

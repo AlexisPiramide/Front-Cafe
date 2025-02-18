@@ -1,0 +1,101 @@
+/* SCSS */
+.modal-container {
+  font-family: Arial, Helvetica, sans-serif;
+
+  .open-btn {
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: #4cae4c;
+    }
+  }
+
+  .modal {
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    align-items: flex-end;
+    animation: fadeIn 0.4s;
+
+    .modal-content {
+      background-color: #fefefe;
+      width: 100%;
+      animation: slideIn 0.4s;
+
+      .modal-header, .modal-footer {
+        padding: 16px;
+        background-color: #5cb85c;
+        color: white;
+      }
+
+      .modal-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+        text-align: center;
+        animation: moveImage 2.4s forwards; /* Slowed down the duration */
+
+        h2 {
+          margin-bottom: 20px;
+          animation: fadeInText 2.6s ease-out; /* Delayed text fade-in for smoothness */
+        }
+
+        img {
+          max-width: 100%;
+          animation: moveImageFromRight 10s forwards; /* Slowed down image movement */
+        }
+      }
+
+      .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+  }
+
+  @keyframes slideIn {
+    from { bottom: -300px; opacity: 0; }
+    to { bottom: 0; opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes moveImageFromRight {
+    0% {
+      transform: translateX(100vw); /* Start from completely off-screen on the right */
+    }
+    100% {
+      transform: translateX(-100vw); /* Move to completely off-screen on the left */
+    }
+  }
+
+  @keyframes fadeInText {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes moveImage {
+    from { transform: translateY(100px); }
+    to { transform: translateY(0); }
+  }
+}

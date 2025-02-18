@@ -3,8 +3,8 @@ const SelectField = ({ label, id, name, options, onChange }) => (
         <label htmlFor={id}>{label}:</label>
         <select id={id} name={name} onChange={onChange} required>
             {options.map((opt) => (
-                <option key={opt.nombre} value={opt.nombre}>
-                    {opt.nombre}
+                <option key={opt} value={opt}>
+                    {opt}
                 </option>
             ))}
         </select>

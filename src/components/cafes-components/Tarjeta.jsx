@@ -4,14 +4,15 @@ import { S3 } from "../../services/constante";
 import { añadirCesta } from "../../services/usuario.services";
 import { useOutletContext } from "react-router";
 
-const Tarjeta = ({ imagen, nombre, tienda, tueste,origen, precio,peso, nota }) => {
-    const [ , setUsuario] = useOutletContext();
+const Tarjeta = ({ imagen, nombre, tienda, tueste,origen, precio,peso, nota,openModal }) => {
+    const [ usuario, setUsuario] = useOutletContext();
     
     const enlaceimagen = S3 + imagen;
 
     const añadiraCesta = (nombre,tueste,tienda) => {
         const datos = putCesta(nombre,tueste,tienda);
         setUsuario(datos);
+        openModal();
     }
 
     const putCesta = async (nombre,tueste,tienda) => {
@@ -19,6 +20,7 @@ const Tarjeta = ({ imagen, nombre, tienda, tueste,origen, precio,peso, nota }) =
         const usuario = JSON.parse(localStorage.getItem('usuario'));
         usuario.usuario= datos.usuario;
         localStorage.setItem("usuario",JSON.stringify(usuario));
+        setUsuario(usuario)
         return datos
     }
 
@@ -31,7 +33,9 @@ const Tarjeta = ({ imagen, nombre, tienda, tueste,origen, precio,peso, nota }) =
             <div className="origen-cafe">Origen: {origen}</div>
             <div className="precio-cafe">Precio: {precio}€</div>
             <div className="peso-cafe">Peso: {peso/1000}kg</div>
-            <button className="boton-cafe" onClick={()=>{añadiraCesta(nombre,tueste,{tienda_alias: tienda.tienda_alias,tienda_id: tienda.tienda_id})}}>Comprar</button>
+            {!usuario.usuario.tienda_alias?
+                <button className="boton-cafe" onClick={()=>{añadiraCesta(nombre,tueste,{tienda_alias: tienda.tienda_alias,tienda_id: tienda.tienda_id})}}>Comprar</button>
+            :''}
             <Nota nota={nota} />
         </div>
     );

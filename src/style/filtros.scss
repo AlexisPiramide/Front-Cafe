@@ -35,6 +35,18 @@
     max-width: 200px;
 }
 
+.filtros select {
+    margin-right: 20px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    max-width: 200px;
+    width: 100%;
+}
+
+
 .filtros input[type="text"] {
     width: 100%;
 }

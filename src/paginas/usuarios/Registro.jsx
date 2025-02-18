@@ -53,7 +53,7 @@ function Registro() {
             <form onSubmit={handleSubmit} className="registro-form">
                 <div className="form-row">
                     <FormField label="Alias" type="text" id="alias" name="alias" onChange={(e) => (setAlias(e.target.value), validacionAlias(e.target.value, setErrorAlias))} onFocus={() => validacionAlias(alias, setErrorAlias)} error={errorAlias} />
-                    <FormField label="Correo Electrónico" type="email" id="correo" name="correo" onChange={(e) => (setCorreo(e.target.value), validacionCorreo(e.target.value, setErrorCorreo))} onFocus={() => validacionCorreo(correo, setErrorCorreo)} error={errorCorreo} />
+                    <FormField label="Correo Electrónico" type="text" id="correo" name="correo" onChange={(e) => (setCorreo(e.target.value), validacionCorreo(e.target.value, setErrorCorreo))} onFocus={() => validacionCorreo(correo, setErrorCorreo)} error={errorCorreo} />
                     <FormField label="Contraseña" type="password" id="contraseña" name="contraseña" onChange={(e) => (setContraseña(e.target.value), validacionContraseña(e.target.value, setErrorContraseña))} onFocus={() => validacionContraseña(contraseña, setErrorContraseña)} error={errorContraseña} />
                     <FormField label="Confirmar Contraseña" type="password" id="confirmarContraseña" name="confirmarContraseña" onChange={(e) => (setConfirmarContraseña(e.target.value), validacionConfirmarContraseña(contraseña, e.target.value, setErrorConfirmarContraseña))} onFocus={() => validacionConfirmarContraseña(contraseña, confirmarContraseña, setErrorConfirmarContraseña)} error={errorConfirmarContraseña} />
                 </div>

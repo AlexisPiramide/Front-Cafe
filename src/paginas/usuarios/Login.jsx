@@ -43,7 +43,7 @@ function Login() {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <FormField label="Correo Electrónico" type="email" id="correo" name="correo" onChange={(e) => (setCorreo(e.target.value),validacionCorreo(e.target.value,setErrorCorreo))} onFocus={() => validacionCorreo(correo,setErrorCorreo)} error={errorCorreo} />
+                <FormField label="Correo Electrónico" type="text" id="correo" name="correo" onChange={(e) => (setCorreo(e.target.value),validacionCorreo(e.target.value,setErrorCorreo))} onFocus={() => validacionCorreo(correo,setErrorCorreo)} error={errorCorreo} />
                 <FormField label="Contraseña" type="password" id="contraseña" name="contraseña" onChange={(e) => (setContraseña(e.target.value),validacionContraseña(e.target.value,setErrorContraseña))} onFocus={() => validacionContraseña(contraseña,setErrorContraseña)} error={errorContraseña} />
                 <button type="submit">Iniciar Sesión</button>
             </form>

@@ -1,7 +1,11 @@
 import React from 'react';
 import "./../../style/cesta-tarjeta.scss";
+import { useNavigate } from 'react-router';
 
 const CestaTarjeta = ({ usuario, modificarCesta }) => {
+
+    const navigate = useNavigate();
+
     return (
         <div className='cesta-tarjeta'>
             {usuario && usuario.usuario.cesta.length >0 ? (
@@ -29,7 +33,10 @@ const CestaTarjeta = ({ usuario, modificarCesta }) => {
                     </div>
                 ))
             ) : (
-                <p>No hay cafés en la cesta.</p>
+                <>
+                    <h2 className="volver">No hay cafés en la cesta.</h2>
+                    <button className="volver" onClick={()=>(navigate("/cafes"))}>Volver al inicio</button>
+                </>
             )}
         </div>
     );

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./../style/nav.scss"
-import Votaciones from "./Votaciones";
+import { use, useEffect } from "react";
 
 
 export default function Nav({usuario,setUsuario}) {
@@ -11,6 +11,11 @@ export default function Nav({usuario,setUsuario}) {
         navigate("/cafes");
     }
 
+    useEffect(() => {
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+        setUsuario(usuario);
+    },[])
+
 
     return ( 
         <nav>
@@ -20,14 +25,15 @@ export default function Nav({usuario,setUsuario}) {
                     <h1>Cafes Piramide</h1>
                 </div>
                 <div className="botones">
-                    {usuario?usuario.tienda?<button onClick={() => navigate("/añadir")}>Añadir café</button>:'':''}
+                    {usuario && usuario.usuario.tienda_alias?<button onClick={() => navigate("/añadir")}>Añadir café</button>:''}
+                    {usuario && usuario.usuario.tienda_alias?<button onClick={() => navigate("/tienda")}>Cafes de mi tienda</button>:''}
                     {usuario?'':<button onClick={() => navigate("/registro")}>Registrarse</button>}
                     {usuario?'':<button onClick={() => navigate("/login")}>Iniciar sesión</button>}
                     <button onClick={() => navigate("/cafes")}>Lista de cafés</button>
-                    {usuario?<button onClick={() => navigate("/votar")}>Votar</button>:''}
+                    {usuario && usuario.usuario.cesta?<button onClick={() => navigate("/votar")}>Votar</button>:''}
                     {usuario?<button onClick={() => navigate("/usuario")}>Perfil de usuario</button>:''}
                     {usuario?<button onClick={cerrarSesion}>Cerrar Sesion</button>:''}
-                    {usuario?<button onClick={() => navigate("/cesta")}>Cesta</button>:''}
+                    {usuario && usuario.usuario.cesta?<button onClick={() => navigate("/cesta")}>Cesta</button>:''}
 
                 </div>
             </div>
