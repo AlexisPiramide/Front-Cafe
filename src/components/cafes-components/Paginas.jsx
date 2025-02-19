@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getPaginas, getPaginasFiltradas } from "../../services/cafes.services";
 import "./../../style/paginas.scss"
 
-export default function Paginas({pagina,setPagina,isFiltrado,filtros}) {
+export default function Paginas({pagina,setPagina,isFiltrado,filtros,isTienda}) {
     const [paginaFinal,setPaginaFinal] = useState();
     
     const getPaginasTotales = async () => {
@@ -23,7 +23,9 @@ export default function Paginas({pagina,setPagina,isFiltrado,filtros}) {
         if(!isFiltrado)
         getPaginasTotales();
         else{
-            console.log(filtros)
+            if(isTienda){
+                GET(filtros);
+            }else
             getPaginasFiltro(filtros);
         }
 
