@@ -10,10 +10,12 @@ export default function Filtros({setFiltros,setIsFiltrado}) {
         tienda: "",
         peso: "",
         precioMax: "",
-        precioMin: ""
+        precioMin: "",
+        porNota: false
     });
 
     const handleChange = (e) => {
+        console.log(filtros.porNota)
         setFiltrosInterno({
             ...filtros,
             [e.target.name]: e.target.value
@@ -65,6 +67,10 @@ export default function Filtros({setFiltros,setIsFiltrado}) {
                     <label>Precio</label>
                     <input type="text" name="precioMin" value={filtros.precioMin} onChange={handleChange} />
                     <input type="text" name="precioMax" value={filtros.precioMax} onChange={handleChange} />
+                </div>
+                <div className="porNota">
+                    <label>Por nota</label>
+                    <input type="checkbox" name="porNota" onChange={(e) => setFiltrosInterno({...filtros, porNota: e.target.checked})} />
                 </div>
             </div>
             <button type="submit">Filtrar</button>
