@@ -33,7 +33,7 @@ const Tarjeta = ({ imagen, nombre, tienda, tueste,origen, precio,peso, nota,open
             <div className="origen-cafe">Origen: {origen}</div>
             <div className="precio-cafe">Precio: {precio}€</div>
             <div className="peso-cafe">Peso: {peso/1000}kg</div>
-            {(usuario && !usuario.usuario.tienda_alias)?
+            {(usuario && usuario.usuario && !usuario.usuario.tienda_alias)?
                 <button className="boton-cafe" onClick={()=>{añadiraCesta(nombre,tueste,{tienda_alias: tienda.tienda_alias,tienda_id: tienda.tienda_id})}}>Comprar</button>
             :''}
             <Nota nota={nota} />

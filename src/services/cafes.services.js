@@ -176,7 +176,8 @@ const eliminarCafe = async (nombre,tienda,tueste,precio,peso,imagen,origen) => {
         headers['Authorization'] = 'Bearer ' + usuario.token;
         const data = await fetch(URL+"/api/cafes/",{
             method: 'DELETE',
-            headers: headers
+            headers: headers,
+            body: JSON.stringify({nombre: nombre, tienda:tienda, tueste:tueste, precio:precio, peso:peso, imagen:imagen, origen:origen})
         });
 
         const json = await data.json();

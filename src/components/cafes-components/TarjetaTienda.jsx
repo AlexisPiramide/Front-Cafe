@@ -29,8 +29,9 @@ export default function TarjetaTienda({ imagen, nombre, tienda, tueste, origen, 
 
     // Handle cafe deletion
     const handleDelete = async (data) => {
-        await eliminarCafe(data.nombre, data.tienda, data.tueste, data.origen, data.precio, data.peso, data.imagen);
+        await eliminarCafe(data.nombre,data.tienda,data.tueste,data.precio,data.peso,data.imagen,data.origen)
         setModalOpen(false);
+        setUpdate(update + 1);
     };
 
     // Handle cafe editing
@@ -44,7 +45,6 @@ export default function TarjetaTienda({ imagen, nombre, tienda, tueste, origen, 
             peso: parseFloat(data.peso),
             imagen: data.imagen
         };
-        console.log(data);
         await updateCafe(nombre, tienda, tueste, precio, peso, imagen,origen, datoscambiar);
         setModalOpen(false);
         setUpdate(update + 1);

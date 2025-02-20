@@ -55,12 +55,12 @@ export default function ZonaUsuario() {
             <form className="perfil">
 
                 <div className="email-usuario" disabled>Email: {usuario?.usuario?.correo || "No disponible"}</div>
-                {editing ?  <button onClick={()=>{setCambiarContraseña(!cambiarContraseña)}} type="button">Cambiar Contraseña</button>: '' }
                
-                {editing ? 
+               
+                {editing && usuario.usuario.cesta ? 
                     <FormField label="Alias" type="text" id="alias" name="alias" onChange={e => (setAlias(e.target.value), validacionAlias(e.target.value, setErrorAlias))} onFocus={() => validacionAlias(alias, setErrorAlias)} error={errorAlias} /> 
                     : <div className="nombre-usuario">Nombre: {usuario?.usuario?.alias || "No disponible"}</div>}
-                
+                {editing ?  <button onClick={()=>{setCambiarContraseña(!cambiarContraseña)}} type="button">Cambiar Contraseña</button>: '' }
                 {editing && cambiarContraseña && <FormField label="Contraseña" type="password" id="contraseña" name="contraseña" onChange={e => (setContraseña(e.target.value), validacionContraseña(e.target.value, setErrorContraseña))} onFocus={() => validacionContraseña(contraseña, setErrorContraseña)} error={errorContraseña} />}
                 {editing && cambiarContraseña && <FormField label="Confirmar Contraseña" type="password" id="confirmarContraseña" name="confirmarContraseña" onChange={e => (setConfirmarContraseña(e.target.value), validacionConfirmarContraseña(contraseña, e.target.value, setErrorConfirmarContraseña))} onFocus={() => validacionConfirmarContraseña(contraseña, confirmarContraseña, setErrorConfirmarContraseña)} error={errorConfirmarContraseña} />}
 

@@ -9,7 +9,7 @@ export default function CafesTienda() {
     const [pagina,setPagina] = useState(0);
     const [update, setUpdate] = useState(0);
     const [paginaFinal,setPaginaFinal] = useState(0);
-
+    
     const fetchData = async (pagina) => {
         const cafesdb = await getCafesTienda(pagina);
         setCafes(cafesdb || []); 
@@ -48,7 +48,7 @@ export default function CafesTienda() {
             )}
             
             </div>
-            <Paginas pagina={pagina} setPagina={setPagina} isFiltrado={false} filtros={null}/>
+            <Paginas pagina={pagina} setPagina={setPagina} isFiltrado={false} filtros={null} isTienda={true}/>
         </>
     );
 }

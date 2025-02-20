@@ -1,4 +1,7 @@
 export default function ConfirmDeleteModal ({ data, onConfirm,setModalOpen }) {
+
+    
+
     return (
         <div className="modal">
             <h2>¿Estás seguro de que deseas eliminar {data.nombre}?</h2>

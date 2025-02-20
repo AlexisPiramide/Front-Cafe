@@ -19,11 +19,11 @@ export default function ModalConfirmacion({ isOpen, setIsOpen, mensaje, tipo }) 
 
   if (tipo) {
     return (
-      <div className="modal-container">
+      <div className="modal-container-confirmacion">
         {isOpen && (
           <div className="modal" onClick={closeModal}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <div className="modal-body">
+            <div className="modal-content-confirmacion" onClick={(e) => e.stopPropagation()}>
+              <div className="modal-body-confirmacion">
                 <h2>{mensaje}</h2>
                 <img src="/carretilla.jpeg" alt="carretilla" />
               </div>
@@ -34,11 +34,11 @@ export default function ModalConfirmacion({ isOpen, setIsOpen, mensaje, tipo }) 
     );
   } else {
     return (
-      <div className="modal-container">
+      <div className="modal-container-confirmacion">
         {isOpen && (
-          <div className="modal" onClick={closeModal}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <div className="modal-body">
+          <div className="modal-confirmacion" onClick={closeModal}>
+            <div className="modal-content-confirmacion" onClick={(e) => e.stopPropagation()}>
+              <div className="modal-body-confirmacion">
                 <h2>{mensaje}</h2>
               </div>
             </div>

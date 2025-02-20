@@ -110,7 +110,7 @@ const añadirCesta = async (nombre,tueste,tienda,accion) => {
 
 }
 
-const enviarCesta = async() =>{
+const enviarCesta = async(direccion) =>{
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     const headers = {
         'Content-Type': 'application/json',
@@ -120,6 +120,7 @@ const enviarCesta = async() =>{
     const data = await fetch(URL+"/api/pedidos/tramitar",{
         method: 'POST',
         headers: headers,
+        body: JSON.stringify({direccion:direccion})
     })
     if(data.ok){
         const json = await data.json();
