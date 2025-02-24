@@ -31,7 +31,7 @@ export default function Filtros({setFiltros,setIsFiltrado}) {
 
 
     const traerTipos = async () => {
-        const response = await fetch(URL+"/cafes/c/c/c/tipos");
+        const response = await fetch(URL+"/api/cafes/c/c/c/tipos");
         const data = await response.json();
         console.log(data)
         setTipos(data);
