@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import './../../style/filtros.scss';
+import { URL } from "../../services/constante";
 
 export default function Filtros({setFiltros,setIsFiltrado}) {
     const [tipos, setTipos] = useState([]);
